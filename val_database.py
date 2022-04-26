@@ -64,8 +64,7 @@ def main_menu():
   MST_final_score = int(input("what was the MST final score?"))
   Other_team_final_score = int(input("What was the score of the opposing team?"))
   Tournament = input("What tournament was this?")
-  Num_games = int(input("How many games were played?"))
-  Game_num = int(input("What game number are you currently on?")) #IDK IF THIS ONE IS CORRECT
+  #Game_num = int(input("Give me a number that hasn't been given yet")) #might add var to use this
   First = input("What is the manager's first name?")
   Last = input("What is the manager's last name?")
   KPR = int(input("What are the KPRs?"))
