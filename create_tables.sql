@@ -3,7 +3,7 @@ create table game(
     Map                        text not null,
     MST_final_score            integer not null,
     Other_team_final_score     integer not null,
-    Final_score                integer not null,
+    -- removed final score
     Tournament                 text,
     Num_games                  integer not null,
     Game_num                   integer primary key autoincrement not null,
@@ -14,11 +14,13 @@ create table player(
     IRL_name        text not null,
     Rank_is         text not null,
     Role_is         text not null,
-    KPR             integer not null,
+    KPR             float not null,
     Kills           integer not null,
     Deaths          integer not null,
     Assists         integer not null,
-    Rounds_Survived text not null,
+    KDA             float not null,
+    Rounds_Survived integer not null,
+    plays_for       text not null REFERENCES team(t_name)
 );
 
 create table team(
@@ -29,18 +31,10 @@ create table team(
     player3     text not null REFERENCES player(IGN),
     player4     text not null REFERENCES player(IGN),
     player5     text not null REFERENCES player(IGN),
-    
-    CONSTRAINT k_caretaker
-        FOREIGN KEY (eid)
-        REFERENCES employee(eid)
 );
 
 create table manager (
-    zoo_subsection text not null,
-    eid integer    integer not null,
-    CONSTRAINT k_manager
-        FOREIGN KEY (eid)
-        REFERENCES employee(eid)
+    m_name      text not null primary key,
+    -- removed splitting up name to match manager
+    manages     text not null REFERENCES team(t_name),
 );
-
-
