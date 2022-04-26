@@ -57,7 +57,7 @@ def total_games():
 # prompt for all aspects of a game then add it into database
 def add_game():  
 
-def main():
+def main_menu():
   Team_name = input("What is the team name?")
   Winning_team = input("What is the name of the winning team?")
   Map = input("What map did you play?")
@@ -78,9 +78,6 @@ def main():
   Rank = input("What is the rank?")
   IRL_name = input("What is their IRL name?")
   Role = input("What is their role?")
-
-
-
 
 
 if __name__ == '__main__':
