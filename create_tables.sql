@@ -1,4 +1,5 @@
 create table game(
+    Game_name                  text     not null,
     Winning_Team               text     not null,
     Map                        text     not null,
     MST_final_score            integer  not null,
@@ -35,11 +36,13 @@ create table team(
         REFERENCES manager(m_name)
 );
 
+
+
 create table manager (
     m_name      text not null primary key,
     -- removed splitting up name to match manager
     manages     text not null,
     CONSTRAINT k_manager
         FOREIGN KEY (manages)
-        REFERENCES manger(m_name)
+        REFERENCES team(t_name)
 );

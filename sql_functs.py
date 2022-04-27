@@ -72,8 +72,3 @@ def total_games(db_file):
     with sqlite3.connect(db_file) as connector:
         curs = connector.cursor()
         s1 = "select "
-# prompt for all aspects of a game then add it into database
-def add_game(db_file):
-    with sqlite3.connect(db_file) as connector:
-        curs = connector.cursor()
-        s1 = "select "
