@@ -5,9 +5,17 @@ create table game(
     MST_final_score            integer  not null,
     Other_team_final_score     integer  not null,
     -- removed final score
+    MST_team                   text     not null,
+    Other_team                 text     not null,
     Tournament                 text,
     Num_games                  integer  not null,
-    Game_num                   integer  primary key autoincrement not null
+    Game_num                   integer  primary key autoincrement
+    CONSTRAINT k_game1
+        FOREIGN KEY (MST_team)
+        REFERENCES team(t_name),
+    CONSTRAINT k_game2
+        FOREIGN KEY (Other_team)
+        REFERENCES team(t_name),
 );
 
 create table player(
@@ -36,13 +44,18 @@ create table team(
         REFERENCES manager(m_name)
 );
 
-
+create table participates(
+    p_name      text not null,
+    game_no     text not null,
+    CONSTRAINT k_p1
+        PRIMARY KEY (p_name, game_no)
+    CONSTRAINT k_p2
+        FOREIGN KEY (p_name)
+        REFERENCES player(IGN)
+    CONSTRAINT k_p3
+        FOREIGN KEY (game_no)
+        REFERENCES game(Game_num)
 
 create table manager (
     m_name      text not null primary key,
-    -- removed splitting up name to match manager
-    manages     text not null,
-    CONSTRAINT k_manager
-        FOREIGN KEY (manages)
-        REFERENCES team(t_name)
 );
