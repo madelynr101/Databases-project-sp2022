@@ -72,3 +72,17 @@ def total_games(db_file):
     with sqlite3.connect(db_file) as connector:
         curs = connector.cursor()
         s1 = "select "
+
+db_file = "val.db"
+schema_file = "create_table.sql"
+
+db_exists = os.path.exists(db_file) # Checks to see if a database file already exists.
+
+if not db_exists: # Creates a new database file with the schema read from the sql file if there isn't already a database file.
+    with sqlite3.connect(db_file) as connector:
+        with open(schema_file, 'rt') as f:
+            schema = f.read()
+        connector.executescript(schema)
+
+if __name__ == "__main__":
+     pass

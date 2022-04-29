@@ -31,16 +31,14 @@ def main_menu():
         '5': "Add Team",
         '6': "View/Update Team",
         '7': "View Total Number of Games",
-        'q': "",
-        'quit': "",
+        'q': "quit",
+        'quit': "quit",
     }
 
     while(choice != 'q' and choice != 'quit'):
         clear_term()
         print("Please choose from the options below: ")
         for option, desc in options.items():
-            if option in ['q', 'quit']:
-                continue
             print(option + ". " + desc)
         choice = input(PROMPT)
 
@@ -52,15 +50,17 @@ def main_menu():
         if choice == '1':
             choice = "TBD"
             game = []
-            #actually do these
-            a = int(input("Please enter animal cage number:\n" + PROMPT))
-            b = input("Please enter animal class:\n" + PROMPT)                
-            c = input("Please enter animal species:\n" + PROMPT)
-            d = input("Please enter animal feed time:\n" + PROMPT)
-            e = input("Please enter animal zoo section:\n" + PROMPT)
-            f = input("Please enter animal diet:\n" + PROMPT)
-            # to here
-            game.append([a,b,c,d,e,f])
+            a = input("Please enter game name:\n" + PROMPT)
+            b = input("Please enter winning team:\n" + PROMPT)                
+            c = input("Please enter map:\n" + PROMPT)
+            d = int(input("Please enter mst team's final score:\n" + PROMPT))
+            e = int(input("Please enter other team's final score:\n" + PROMPT))
+            f = input("Please enter if it was Green/Gold mst team:\n" + PROMPT)
+            g = input("Please enter other team's name:\n" + PROMPT)
+            h = input("Please enter Tournament name (if there was one):\n" + PROMPT)
+            i = int(input("Please enter the number of total games:\n" + PROMPT))
+            j = int(input("Please enter unique game number:\n" + PROMPT))
+            game.append([a,b,c,d,e,f,g,h,i,j])
             sql_functs.add_game(DB_FILE, game)            
             waitKey()
         # View/Update Games
@@ -71,7 +71,19 @@ def main_menu():
         # Add player
         elif choice == '3':
             choice = "TBD"
-
+            player = []
+            a = input("Please enter game name:\n" + PROMPT)
+            b = input("Please enter winning team:\n" + PROMPT)                
+            c = input("Please enter map:\n" + PROMPT)
+            d = int(input("Please enter mst team's final score:\n" + PROMPT))
+            e = int(input("Please enter other team's final score:\n" + PROMPT))
+            f = input("Please enter if it was Green/Gold mst team:\n" + PROMPT)
+            g = input("Please enter other team's name:\n" + PROMPT)
+            h = input("Please enter Tournament name (if there was one):\n" + PROMPT)
+            i = int(input("Please enter the number of total games:\n" + PROMPT))
+            j = int(input("Please enter unique game number:\n" + PROMPT))
+            game.append([a,b,c,d,e,f,g,h,i,j])
+            sql_functs.add_game(DB_FILE, game)  
             waitKey()
         # View/Update Player
         elif choice == '4':
@@ -81,7 +93,19 @@ def main_menu():
         # Add Team
         elif choice == '5':
             choice = "TBD"
-
+            team = []
+            a = input("Please enter game name:\n" + PROMPT)
+            b = input("Please enter winning team:\n" + PROMPT)                
+            c = input("Please enter map:\n" + PROMPT)
+            d = int(input("Please enter mst team's final score:\n" + PROMPT))
+            e = int(input("Please enter other team's final score:\n" + PROMPT))
+            f = input("Please enter if it was Green/Gold mst team:\n" + PROMPT)
+            g = input("Please enter other team's name:\n" + PROMPT)
+            h = input("Please enter Tournament name (if there was one):\n" + PROMPT)
+            i = int(input("Please enter the number of total games:\n" + PROMPT))
+            j = int(input("Please enter unique game number:\n" + PROMPT))
+            game.append([a,b,c,d,e,f,g,h,i,j])
+            sql_functs.add_game(DB_FILE, game)  
             waitKey()
         # View/Update teams
         elif choice == '6':

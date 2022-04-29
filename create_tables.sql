@@ -8,7 +8,7 @@ create table game(
     MST_team                   text     not null,
     Other_team                 text     not null,
     Tournament                 text,
-    Num_games                  integer  not null,
+    Num_rounds                 integer  not null,
     Game_num                   integer  primary key autoincrement
     CONSTRAINT k_game1
         FOREIGN KEY (MST_team)
@@ -28,9 +28,8 @@ create table player(
     Deaths          integer not null,
     Assists         integer not null,
     KDA             float   not null,
-    Rounds_Survived integer not null,
+    Rounds_Played   integer not null,
     plays_for       text    not null,
-    Agent           text    not null,
     CONSTRAINT k_player
         FOREIGN KEY (plays_for)
         REFERENCES team(t_name),
@@ -58,4 +57,5 @@ create table participates(
 
 create table manager (
     m_name      text not null primary key,
+    --removed splitting first and last
 );
