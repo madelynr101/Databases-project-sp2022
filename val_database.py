@@ -155,38 +155,122 @@ def menu_games():
         #View all games
         if choice == '2':
             choice = "TBD"
+            sql_functs.view_all_games(DB_FILE)
             waitKey()
         #View games by game number
         if choice == '3':
             choice = "TBD"
+            gno = int(input("Please enter the game number of the game you want to see:\n" + PROMPT))
+            sql_functs.games_by_num(DB_FILE, gno)
             waitKey()
         #View games by MST Green/Gold
         if choice == '4':
             choice = "TBD"
+            mst = input("Please enter the MST gold/green team to see their games:\n" + PROMPT)
+            sql_functs.games_by_mst(DB_FILE, mst)
             waitKey()
         #View games by other team
         if choice == '5':
             choice = "TBD"
+            team = input("Please enter the other team name to see their games:\n" + PROMPT)
+            sql_functs.games_by_name(DB_FILE, team)
             waitKey()
         #View games by tournament
         if choice == '6':
             choice = "TBD"
+            tourn = input("Please enter the tournament name to see those games:\n" + PROMPT)
+            sql_functs.games_by_tourn(DB_FILE, tourn)
             waitKey()
         #View games by map
         if choice == '7':
             choice = "TBD"
+            map = input("Please enter the map name to see games on that map:\n" + PROMPT)
+            sql_functs.games_by_map(DB_FILE, map)
             waitKey()
         #View total number of games
         if choice == '8':
             choice = "TBD"
+            sql_functs.tot_games(DB_FILE)
             waitKey()
         #View players in game number
         if choice == '9':
             choice = "TBD"
+            gno = int(input("Please enter the game number of players you want to see:\n" + PROMPT))
+            sql_functs.participates_by_num(DB_FILE, gno)
             waitKey()
         #Update game
         if choice == '10':
             choice = "TBD"
+            
+            update_choice = "TBD"
+            continue_choice = 'yes'
+            game_options = {
+                '1': "The game's name.",
+                '2': "The game's Winning Team.",
+                '3': "The game's map.",
+                '4': "The game's MST final score.",
+                '5': "The game's other team final score.",
+                '6': "The game's MST team name.",
+                '7': "The game's other team name.",
+                '8': "The game's tournament.",
+                '9': "The game's number of rounds.",
+                'b': "Go back.",
+                'back': "",
+                'q': "Quit.",
+                'quit': "",
+            }
+            while(update_choice.lower() == 'yes'):
+                print("What information about the game would you like to update?")
+                for option, desc in game_option.items():
+                    if option == 'b':
+                        print('(b)ack' + ". " + desc)
+                        continue
+                    if option == 'q':
+                        print('(q)uit' + ". " + desc)
+                        continue
+                    if option in ['back', 'quit']:
+                        continue
+                    print(option + ". " + desc)
+                
+                update_choice = input(PROMPT)
+            
+                gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround,gno = 0,0,0,0,0,0,0,0,0,0
+                
+                # Branching to account for specific changes 
+                if update_choice == '1':
+                    gname = input("Please enter a new game name:\n" + PROMPT)
+                    sql_functs.update_game(DB_FILE,gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround,gno)
+                elif update_choice == '2':
+                    wteam = input("Please enter a new winning team:\n" + PROMPT)
+                    sql_functs.update_game(DB_FILE,gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround,gno)
+                elif update_choice == '3':
+                    map = input("Please enter a new map name:\n" + PROMPT)
+                    sql_functs.update_game(DB_FILE,gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround,gno)
+                elif update_choice == '4':
+                    mstfin = int(input("Please enter a new mst team final score:\n" + PROMPT))
+                    sql_functs.update_game(DB_FILE,gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround,gno)
+                elif update_choice == '5':
+                    otherfin = int(input("Please enter a new other team final score:\n" + PROMPT))
+                    sql_functs.update_game(DB_FILE,gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround,gno)
+                elif update_choice == '6':
+                    mst = input("Please enter a new mst team name:\n" + PROMPT)
+                    sql_functs.update_game(DB_FILE,gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround,gno)
+                elif update_choice == '7':
+                    other = input("Please enter a new team name for the other team:\n" + PROMPT)
+                    sql_functs.update_game(DB_FILE,gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround,gno)
+                elif update_choice == '8':
+                    tourn = input("Please enter a new tournament name:\n" + PROMPT)
+                    sql_functs.update_game(DB_FILE,gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround,gno)
+                elif update_choice == '9':
+                    numround = int(input("Please enter a new number of rounds:\n" + PROMPT))
+                    sql_functs.update_game(DB_FILE,gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround,gno)
+                elif update_choice == 'b' or update_choice == 'back':
+                    continue
+                elif update_choice == 'q' or update_choice == 'quit':
+                    exit()
+                else:
+                    print("Invalid input.")
+                update_choice = input("Do you want to change any additional information about the game?(yes or no)\n" + PROMPT)
             waitKey()
 
 def menu_players():
@@ -218,6 +302,7 @@ def menu_players():
         #View all players
         if choice == '1':
             choice = "TBD"  
+            sql_functs.view_all_players(DB_FILE)
             waitKey()
         #Update player
         if choice == '2':
