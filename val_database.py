@@ -233,8 +233,8 @@ def menu_games():
                     print(option + ". " + desc)
                 
                 update_choice = input(PROMPT)
-            
-                gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround,gno = 0,0,0,0,0,0,0,0,0,0
+                gno = int(input("In which game? (insert game number):\n"+PROMPT))
+                gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround = 0,0,0,0,0,0,0,0,0
                 
                 # Branching to account for specific changes 
                 if update_choice == '1':
@@ -339,8 +339,8 @@ def menu_players():
                     print(option + ". " + desc)
                 
                 update_choice = input(PROMPT)
-            
-                ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr = 0,0,0,0,0,0,0,0,0,0,0
+                ign = int(input("In which player? (insert their IGN):\n"+PROMPT))
+                irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr = 0,0,0,0,0,0,0,0,0,0
                 
                 # Branching to account for specific changes 
                 if update_choice == '1':
@@ -434,7 +434,8 @@ def menu_teams():
             choice = "TBD"
             update_choice = "TBD"
             continue_choice = 'yes'
-            name,manag = 0,0
+            name = input("In which team? (insert team name):\n"+PROMPT)
+            manag = 0
             update_choice = input("Please enter 1 to update team name 2 to update manager name:\n" + PROMPT)
             if update_choice == 1:
                 name = input("Please enter the new name of the team")
