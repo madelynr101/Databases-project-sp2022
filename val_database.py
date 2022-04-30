@@ -221,7 +221,7 @@ def menu_games():
             }
             while(update_choice.lower() == 'yes'):
                 print("What information about the game would you like to update?")
-                for option, desc in game_option.items():
+                for option, desc in game_options.items():
                     if option == 'b':
                         print('(b)ack' + ". " + desc)
                         continue
@@ -307,22 +307,98 @@ def menu_players():
         #Update player
         if choice == '2':
             choice = "TBD"
+            
+            update_choice = "TBD"
+            continue_choice = 'yes'
+            player_options = {
+                '1': "The player's in game name.",
+                '2': "The player's in real life name.",
+                '3': "The player's rank.",
+                '4': "The player's team name.",
+                '5': "The player's role.",
+                '6': "The player's kills.",
+                '7': "The player's deaths.",
+                '8': "The player's assists.",
+                '9': "The player's number of rounds.",
+                'b': "Go back.",
+                'back': "",
+                'q': "Quit.",
+                'quit': "",
+            }
+            while(update_choice.lower() == 'yes'):
+                print("What information about the player would you like to update?")
+                for option, desc in player_options.items():
+                    if option == 'b':
+                        print('(b)ack' + ". " + desc)
+                        continue
+                    if option == 'q':
+                        print('(q)uit' + ". " + desc)
+                        continue
+                    if option in ['back', 'quit']:
+                        continue
+                    print(option + ". " + desc)
+                
+                update_choice = input(PROMPT)
+            
+                ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr = 0,0,0,0,0,0,0,0,0,0,0
+                
+                # Branching to account for specific changes 
+                if update_choice == '1':
+                    ign = input("Please enter a new in game name:\n" + PROMPT)
+                    sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
+                elif update_choice == '2':
+                    irl = input("Please enter a new in real life name:\n" + PROMPT)
+                    sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
+                elif update_choice == '3':
+                    rank = input("Please enter a new rank name:\n" + PROMPT)
+                    sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
+                elif update_choice == '4':
+                    plays_for = input("Please enter a new team name:\n" + PROMPT)
+                    sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
+                elif update_choice == '5':
+                    role = input("Please enter a new role name:\n" + PROMPT)
+                    sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
+                elif update_choice == '6':
+                    kills = int(input("Please enter a new number of kills:\n" + PROMPT))
+                    sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
+                elif update_choice == '7':
+                    deaths = int(input("Please enter a new number of deaths:\n" + PROMPT))
+                    sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
+                elif update_choice == '8':
+                    assist = int(input("Please enter a new number of assists:\n" + PROMPT))
+                    sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
+                elif update_choice == '9':
+                    rounds = int(input("Please enter a new number of rounds:\n" + PROMPT))
+                    sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
+                elif update_choice == 'b' or update_choice == 'back':
+                    continue
+                elif update_choice == 'q' or update_choice == 'quit':
+                    exit()
+                else:
+                    print("Invalid input.")
+                update_choice = input("Do you want to change any additional information about the player?(yes or no)\n" + PROMPT)
             waitKey()
         #View players who play for (team)
         if choice == '3':
             choice = "TBD"
+            team = input("Please enter the team name who u want to see players for:\n" + PROMPT)
+            sql_functs.play_for(DB_FILE, team)
             waitKey()
         #View players who play (role)
         if choice == '4':
             choice = "TBD"
+            role = input("Please enter the team name who u want to see players for:\n" + PROMPT)
+            sql_functs.plays_role(DB_FILE, role)
             waitKey()
         #View players with KDA over 1.5
         if choice == '5':
             choice = "TBD"
+            sql_functs.kd_over(DB_FILE)
             waitKey()
         #View players with KDA under 1.5
         if choice == '6':
             choice = "TBD"
+            sql_functs.kd_under(DB_FILE)
             waitKey()
 
 def menu_teams():
@@ -351,14 +427,29 @@ def menu_teams():
         #View all teams
         if choice == '1':
             choice = "TBD"  
+            sql_functs.view_all_teams(DB_FILE)
             waitKey()
         #Update team
         if choice == '2':
             choice = "TBD"
+            update_choice = "TBD"
+            continue_choice = 'yes'
+            name,manag = 0,0
+            update_choice = input("Please enter 1 to update team name 2 to update manager name:\n" + PROMPT)
+            if update_choice == 1:
+                name = input("Please enter the new name of the team")
+                sql_functs.update_team(DB_FILE, name, manag)
+            elif update_choice == 2:
+                manag = input("Please enter the new name of the manager")
+                sql_functs.update_team(DB_FILE, name, manag)
+            else:
+                print("Invalid input.")
             waitKey()
         #View manager of (team)
         if choice == '3':
             choice = "TBD"
+            team = input("Please enter the team name who u want to see manager of:\n" + PROMPT)
+            sql_functs.manager_of(DB_FILE, team)
             waitKey()
 
 
