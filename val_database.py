@@ -74,7 +74,7 @@ def main_menu():
             player = []
             a = input("Please enter IGN:\n" + PROMPT)
             b = input("Please enter player's irl name:\n" + PROMPT)                
-            c = input("Please enter player's rank:\n" + PROMPT)
+            c = input("Please enter player's rank in format 'rank_abbrevation''rank_number':\n" + PROMPT)
             d = input("Please enter player's team:\n" + PROMPT)
             e = input("Please enter player's role:\n" + PROMPT)
             f = int(input("Please enter player's kills:\n" + PROMPT))
@@ -352,7 +352,7 @@ def menu_players():
                     irl = input("Please enter a new in real life name:\n" + PROMPT)
                     sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
                 elif update_choice == '3':
-                    rank = input("Please enter a new rank name:\n" + PROMPT)
+                    rank = input("Please enter a new rank in format 'rank_abbrevation''rank_number':\n" + PROMPT)
                     sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
                 elif update_choice == '4':
                     plays_for = input("Please enter a new team name:\n" + PROMPT)
