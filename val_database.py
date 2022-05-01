@@ -58,7 +58,7 @@ def main_menu():
             f = input("Please enter if it was Green/Gold mst team:\n" + PROMPT)
             g = input("Please enter other team's name:\n" + PROMPT)
             h = input("Please enter Tournament name (if there was one):\n" + PROMPT)
-            i = int(input("Please enter the number of total games:\n" + PROMPT))
+            i = int(input("Please enter the number of total rounds:\n" + PROMPT))
             j = int(input("Please enter unique game number:\n" + PROMPT))
             game.append([a,b,c,d,e,f,g,h,i,j])
             sql_functs.add_game(DB_FILE, game)            
@@ -464,5 +464,6 @@ def menu_teams():
 
 if __name__ == '__main__':
     print("Welcome to MST's Valorant DBMS")
+    user_choice = "TBD"
     while(user_choice != "quit" and user_choice != "q"):
         user_choice = main_menu()
