@@ -108,7 +108,7 @@ def main_menu():
         # View num games
         elif choice == '7':
             choice = "TBD"
-            sql_functs.num_games(DB_FILE)
+            sql_functs.tot_games(DB_FILE)
             waitKey()
     return choice
 
@@ -319,7 +319,9 @@ def menu_players():
                 '6': "The player's kills.",
                 '7': "The player's deaths.",
                 '8': "The player's assists.",
-                '9': "The player's number of rounds.",
+                '9': "The player's number of rounds survived.",
+                '10': "The player's kda.",
+                '11': "The player's kpr.",
                 'b': "Go back.",
                 'back': "",
                 'q': "Quit.",
@@ -368,7 +370,13 @@ def menu_players():
                     assist = int(input("Please enter a new number of assists:\n" + PROMPT))
                     sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
                 elif update_choice == '9':
-                    rounds = int(input("Please enter a new number of rounds:\n" + PROMPT))
+                    rounds = int(input("Please enter a new number of rounds survived:\n" + PROMPT))
+                    sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
+                elif update_choice == '10':
+                    kda = float(input("Please enter a new kda:\n" + PROMPT))
+                    sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
+                elif update_choice == '11':
+                    kpr = float(input("Please enter a new kpr:\n" + PROMPT))
                     sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
                 elif update_choice == 'b' or update_choice == 'back':
                     continue
@@ -438,7 +446,7 @@ def menu_teams():
             manag = 0
             update_choice = input("Please enter 1 to update team name 2 to update manager name:\n" + PROMPT)
             if update_choice == 1:
-                name = input("Please enter the new name of the team")
+                name = input("You cannot change this with my current design but add a name to entice me")
                 sql_functs.update_team(DB_FILE, name, manag)
             elif update_choice == 2:
                 manag = input("Please enter the new name of the manager")
