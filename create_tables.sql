@@ -1,3 +1,9 @@
+
+create table team(
+    t_name      text not null primary key,
+    t_manager   text not null
+);
+
 create table game(
     Game_name                  text     not null,
     Winning_Team               text     not null,
@@ -5,49 +11,30 @@ create table game(
     MST_final_score            integer  not null,
     Other_team_final_score     integer  not null,
     -- removed final score
-    MST_team                   text     not null,
-    Other_team                 text     not null,
+    MST_team                   text     not null REFERENCES team(t_name),
+    Other_team                 text     not null REFERENCES team(t_name),
     Tournament                 text,
     Num_rounds                 integer  not null,
     Game_num                   integer  primary key autoincrement
-    CONSTRAINT k_game1
-        FOREIGN KEY (MST_team)
-        REFERENCES team(t_name),
-    CONSTRAINT k_game2
-        FOREIGN KEY (Other_team)
-        REFERENCES team(t_name),
 );
 
 create table player(
     IGN             text    not null primary key,
     IRL_name        text    not null,
     Rank_is         text    not null,
-    Plays_for       text    not null,
+    Plays_for       text    not null REFERENCES team(t_name),
     Role_is         text    not null,
     Kills           integer not null,
     Deaths          integer not null,
     Assists         integer not null,
     KDA             float   not null,
     Rounds_Played   integer not null,
-    KPR             float   not null,
-    CONSTRAINT k_player
-        FOREIGN KEY (Plays_for)
-        REFERENCES team(t_name),
-);
-
-create table team(
-    t_name      text not null primary key,
-    t_manager   text not null,
+    KPR             float   not null
 );
 
 create table participates(
-    p_name      text not null,
-    game_no     text not null,
+    p_name      text not null REFERENCES player(IGN),
+    game_no     text not null REFERENCES game(Game_num),
     CONSTRAINT k_p1
         PRIMARY KEY (p_name, game_no)
-    CONSTRAINT k_p2
-        FOREIGN KEY (p_name)
-        REFERENCES player(IGN)
-    CONSTRAINT k_p3
-        FOREIGN KEY (game_no)
-        REFERENCES game(Game_num)
+);

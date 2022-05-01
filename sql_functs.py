@@ -1,8 +1,6 @@
 import os, sys
 import sqlite3
 
-#from tabulate import tabulate
-
 # adds new row to the gmae table
 def add_game(db_file, game): 
     with sqlite3.connect(db_file) as connector:
@@ -38,7 +36,6 @@ def view_all_games(db_file):
         qry = "select Game_name, Winning_Team, Map, MST_final_score, Other_team_final_score, MST_team, Other_team, Tournament, Game_num from game"
         curs.execute(qry)
         headers = ["Game_name", "Winning_Team", "Map", "MST_final_score", "Other_team_final_score", "MST_team", "Other_team","Tournament", "Game_num"]
-        #print(tabulate(curs.fetchall(), headers))
         print(curs.fetchall())
 
 # Search for game by game no
@@ -48,7 +45,6 @@ def games_by_num(db_file, gno):
         qry = "select Game_name, Winning_Team, Map, MST_final_score, Other_team_final_score, MST_team, Other_team,Tournament ,Game_num from game where Game_num = " + gno
         curs.execute(qry)
         headers = ["Game_name", "Winning_Team", "Map", "MST_final_score", "Other_team_final_score", "MST_team", "Other_team","Tournament","Game_num"]
-        #print(tabulate(curs.fetchall(), headers))
         print(curs.fetchall())
 
 # Search for game by game MST
@@ -58,7 +54,6 @@ def games_by_mst(db_file, mst):
         qry = "select Game_name, Winning_Team, Map, MST_final_score, Other_team_final_score, MST_team, Other_team,Tournament ,Game_num from game where MST_team = " + mst
         curs.execute(qry)
         headers = ["Game_name", "Winning_Team", "Map", "MST_final_score", "Other_team_final_score", "MST_team", "Other_team","Tournament","Game_num"]
-        #print(tabulate(curs.fetchall(), headers))
         print(curs.fetchall())
 
 # Search for game by game Other teams
@@ -68,7 +63,6 @@ def games_by_name(db_file, name):
         qry = "select Game_name, Winning_Team, Map, MST_final_score, Other_team_final_score, MST_team, Other_team,Tournament ,Game_num from game where Other_team = " + name
         curs.execute(qry)
         headers = ["Game_name", "Winning_Team", "Map", "MST_final_score", "Other_team_final_score", "MST_team", "Other_team","Tournament","Game_num"]
-        #print(tabulate(curs.fetchall(), headers))
         print(curs.fetchall())
 
 # Search for games that were a part of certain tournaments
@@ -78,7 +72,6 @@ def tourna_games(db_file, tournament_name):
         qry = "select Game_name, Winning_Team, Map, MST_final_score, Other_team_final_score, MST_team, Other_team,Tournament, Game_num from game where Tournament = " + tournament_name
         curs.execute(qry)
         headers = ["Game_name", "Winning_Team", "Map", "MST_final_score", "Other_team_final_score", "MST_team", "Other_team","Tournament","Game_num"]
-        #print(tabulate(curs.fetchall(), headers))
         print(curs.fetchall())
 
 # Search for game by map
@@ -88,7 +81,7 @@ def games_by_map(db_file, map):
         qry = "select Game_name, Winning_Team, Map, MST_final_score, Other_team_final_score, MST_team, Other_team,Tournament ,Game_num from game where Map = " + map
         curs.execute(qry)
         headers = ["Game_name", "Winning_Team", "Map", "MST_final_score", "Other_team_final_score", "MST_team", "Other_team","Tournament","Game_num"]
-        #print(tabulate(curs.fetchall(), headers))
+        print(curs.fetchall())
 
 # use count to count number of rows in games table
 def tot_games(db_file): 
@@ -107,7 +100,6 @@ def participates_by_num(db_file, gno):
         qry = "select p_name, game_no from participates where game_no = " + gno
         curs.execute(qry)
         headers = ["p_name", "game_no"]
-        #print(tabulate(curs.fetchall(), headers))
         print(curs.fetchall())
 
 #prints all players
@@ -117,7 +109,6 @@ def view_all_players(db_file):
         qry = "select IGN, IRL_name, Rank_is, Plays_for, Role_is, Kills, Deaths, Assists, KDA, Rounds_Played, KPR from player"
         curs.execute(qry)
         headers = ["IGN", "IRL_name", "Rank_is", "Plays_for", "Role_is", "Kills", "Deaths", "Assists", "KDA", "Rounds_Played", "KPR"]
-        #print(tabulate(curs.fetchall(), headers))
         print(curs.fetchall())
 
 #prints all players who play for team
@@ -127,7 +118,6 @@ def plays_for(db_file, team):
         qry = "select IGN, IRL_name, Rank_is, Plays_for, Role_is, Kills, Deaths, Assists, KDA, Rounds_Played, KPR from player where Plays_for = " + team
         curs.execute(qry)
         headers = ["IGN", "IRL_name", "Rank_is", "Plays_for", "Role_is", "Kills", "Deaths", "Assists", "KDA", "Rounds_Played", "KPR"]
-        #print(tabulate(curs.fetchall(), headers)) 
         print(curs.fetchall())       
 
 #prints all players who play certain role
@@ -137,7 +127,6 @@ def plays_role(db_file, role):
         qry = "select IGN, IRL_name, Rank_is, Plays_for, Role_is, Kills, Deaths, Assists, KDA, Rounds_Played, KPR from player where Role_is = " + role
         curs.execute(qry)
         headers = ["IGN", "IRL_name", "Rank_is", "Plays_for", "Role_is", "Kills", "Deaths", "Assists", "KDA", "Rounds_Played", "KPR"]
-        #print(tabulate(curs.fetchall(), headers))
         print(curs.fetchall()) 
 
 #prints all players who have kda under 1.5
@@ -147,7 +136,6 @@ def kd_under(db_file):
         qry = "select IGN, IRL_name, Rank_is, Plays_for, Role_is, Kills, Deaths, Assists, KDA, Rounds_Played, KPR from player where KDA <= " + 1.5
         curs.execute(qry)
         headers = ["IGN", "IRL_name", "Rank_is", "Plays_for", "Role_is", "Kills", "Deaths", "Assists", "KDA", "Rounds_Played", "KPR"]
-        #print(tabulate(curs.fetchall(), headers))
         print(curs.fetchall())
 
 #prints all players who have kda over 1.5
@@ -157,7 +145,6 @@ def kd_over(db_file):
         qry = "select IGN, IRL_name, Rank_is, Plays_for, Role_is, Kills, Deaths, Assists, KDA, Rounds_Played, KPR from player where KDA >= " + 1.5
         curs.execute(qry)
         headers = ["IGN", "IRL_name", "Rank_is", "Plays_for", "Role_is", "Kills", "Deaths", "Assists", "KDA", "Rounds_Played", "KPR"]
-        #print(tabulate(curs.fetchall(), headers))
         print(curs.fetchall())
 
 #prints all teams
@@ -167,17 +154,15 @@ def view_all_teams(db_file):
         qry = "select t_name, t_manager from team"
         curs.execute(qry)
         headers = ["t_name", "t_manager"]
-        #print(tabulate(curs.fetchall(), headers))
         print(curs.fetchall())
 
 #prints manager of team with team name
-def view_all_teams(db_file, name):
+def manager_of(db_file, name):
     with sqlite3.connect(db_file) as connector:
         curs = connector.cursor()
         qry = "select t_name, t_manager from team where t_name = " + name
         curs.execute(qry)
         headers = ["t_name", "t_manager"]
-        #print(tabulate(curs.fetchall(), headers))
         print(curs.fetchall())
 
 #updates manager of team cant update t_name with this setup
@@ -267,6 +252,7 @@ if not db_exists: # Creates a new database file with the schema read from the sq
     with sqlite3.connect(db_file) as connector:
         with open(schema_file, 'rt') as f:
             schema = f.read()
+        print(schema)
         connector.executescript(schema)
 
 if __name__ == "__main__":
