@@ -3,6 +3,7 @@ import os, sys
 import sqlite3
 from getpass import getpass
 
+
 import sql_functs
 
 DB_FILE = "val.db"
@@ -32,7 +33,6 @@ def main_menu():
         '6': "View/Update Team",
         '7': "View Total Number of Games",
         'q': "quit",
-        'quit': "quit",
     }
 
     while(choice != 'q' and choice != 'quit'):
@@ -129,7 +129,6 @@ def menu_games():
         '9': "View players in game number",
         '10': "Update game",
         'q': "quit",
-        'quit': "quit",
     }
 
     while(choice != 'q' and choice != 'quit'):
@@ -285,7 +284,6 @@ def menu_players():
         '5': "View players who have KDA over 1.5",
         '6': "View players who have KDA under 1.5",
         'q': "quit",
-        'quit': "quit",
     }
 
     while(choice != 'q' and choice != 'quit'):
@@ -418,7 +416,6 @@ def menu_teams():
         '2': "Update team",
         '3': "View manager of (team)",
         'q': "quit",
-        'quit': "quit",
     }
 
     while(choice != 'q' and choice != 'quit'):
