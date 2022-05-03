@@ -34,6 +34,8 @@ def main_menu():
         '6': "View/Update Team",
         '7': "View Total Number of Games",
         '8': "Delete Game", 
+        '9': "Delete Player", 
+        '10': "Delete Team",
         'q': "quit",
     }
 
@@ -117,6 +119,18 @@ def main_menu():
             choice = "TBD"
             gno = int(input("What game number?"))
             sql_functs.delete_game(DB_FILE, gno)
+            waitKey()
+        # Delete Player
+        elif choice == '9':
+            choice = "TBD"
+            IGN = input("What IGN?")
+            sql_functs.delete_player(DB_FILE, IGN)
+            waitKey()
+        # Delete Team
+        elif choice == '10':
+            choice = "TBD"
+            team_name = input("What team name?")
+            sql_functs.delete_team(DB_FILE, team_name)
             waitKey()
     return choice
 

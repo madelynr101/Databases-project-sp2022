@@ -255,14 +255,14 @@ def delete_game(db_file, gno):
 def delete_player(db_file, ign):
     with sqlite3.connect(db_file) as connector:
         curs = connector.cursor()
-        qry = "delete from player where IGN = " + ign
+        qry = "delete from player where IGN = \"" + ign +'\"'
         curs.execute(qry)
 
 # Delete the team 
 def delete_team(db_file, team_name):
     with sqlite3.connect(db_file) as connector:
         curs = connector.cursor()
-        qry = "delete from team where t_name = " + team_name
+        qry = "delete from team where t_name = \"" + team_name +'\"'
         curs.execute(qry)
 
 

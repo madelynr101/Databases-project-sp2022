@@ -1,6 +1,6 @@
 
 create table team(
-    t_name      text not null primary key,
+    t_name      varchar(255) not null primary key,
     t_manager   text not null
 );
 
@@ -19,7 +19,7 @@ create table game(
 );
 
 create table player(
-    IGN             text    not null primary key,
+    IGN             varchar(255)    not null primary key,
     IRL_name        text    not null,
     Rank_is         text    not null,
     Plays_for       text    not null REFERENCES team(t_name),
