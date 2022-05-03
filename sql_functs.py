@@ -181,28 +181,28 @@ def update_game(db_file, gname,wteam,map,mstfin,otherfin,mst,other,tourn,numroun
     with sqlite3.connect(db_file) as connector:
         curs = connector.cursor()
         if gname != 0:
-            qry = "update game set Game_name = \"" + gname + "\" where Game_num = " + gno
+            qry = "update game set Game_name = \"" + gname + "\" where Game_num = " + str(gno)
             curs.execute(qry)
         elif wteam != 0:
-            qry = "update game set Winnning_team = \"" + wteam + "\" where Game_num = " + gno
+            qry = "update game set Winnning_team = \"" + wteam + "\" where Game_num = " + str(gno)
             curs.execute(qry)
         elif map != 0:
-            qry = "update game set Map = \"" + map + "\" where Game_num = " + gno
+            qry = "update game set Map = \"" + map + "\" where Game_num = " + str(gno)
             curs.execute(qry)
         elif mstfin != 0:
-            qry = "update game set MST_final_score = \"" + mstfin + "\" where Game_num = " + gno
+            qry = "update game set MST_final_score = \"" + str(mstfin) + "\" where Game_num = " + str(gno)
             curs.execute(qry)
         elif otherfin != 0:
-            qry = "update game set Other_team_final_score = \"" + otherfin + "\" where Game_num = " + gno
+            qry = "update game set Other_team_final_score = \"" + str(otherfin) + "\" where Game_num = " + str(gno)
             curs.execute(qry)
         elif mst != 0:
-            qry = "update game set MST_team = \"" + mst + "\" where Game_num = " + gno
+            qry = "update game set MST_team = \"" + mst + "\" where Game_num = " + str(gno)
             curs.execute(qry)
         elif other != 0:
-            qry = "update game set Other_team = \"" + other + "\" where Game_num = " + gno
+            qry = "update game set Other_team = \"" + other + "\" where Game_num = " + str(gno)
             curs.execute(qry)
         elif tourn != 0:
-            qry = "update game set Tournament = \"" + tourn + "\" where Game_num = " + gno
+            qry = "update game set Tournament = \"" + tourn + "\" where Game_num = " + str(gno)
             curs.execute(qry)
         elif numround != 0:
             qry = "update game set Num_rounds = \"" + numround + "\" where Game_num = " + gno
@@ -226,22 +226,22 @@ def update_player(db_file, ign,irl,rank,plays_for,role,kills,deaths,assist,kda,r
             qry = "update player set Role_is = \"" + role + "\" where IGN = " + ign
             curs.execute(qry)
         elif kills != 0:
-            qry = "update player set Kills = \"" + kills + "\" where IGN = " + ign
+            qry = "update player set Kills = \"" + str(kills) + "\" where IGN = " + ign
             curs.execute(qry)
         elif deaths != 0:
-            qry = "update player set Deaths = \"" + deaths + "\" where IGN = " + ign
+            qry = "update player set Deaths = \"" + str(deaths) + "\" where IGN = " + ign
             curs.execute(qry)
         elif assist != 0:
-            qry = "update player set Assist = \"" + assist + "\" where IGN = " + ign
+            qry = "update player set Assist = \"" + str(assist) + "\" where IGN = " + ign
             curs.execute(qry)
         elif rounds != 0:
-            qry = "update player set Num_rounds = \"" + rounds + "\" where IGN = " + ign
+            qry = "update player set Num_rounds = \"" + str(rounds) + "\" where IGN = " + ign
             curs.execute(qry)
         elif kda != 0:
-            qry = "update player set KDA = \"" + kda + "\" where IGN = " + ign
+            qry = "update player set KDA = \"" + str(kda) + "\" where IGN = " + ign
             curs.execute(qry)
         elif kpr != 0:
-            qry = "update player set KPR = \"" + kpr + "\" where IGN = " + ign
+            qry = "update player set KPR = \"" + str(kpr) + "\" where IGN = " + ign
             curs.execute(qry)
 
 db_file = "val.db"
