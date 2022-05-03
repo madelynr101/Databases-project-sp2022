@@ -218,7 +218,7 @@ def menu_games():
                 'q': "Quit.",
                 'quit': "",
             }
-            while(update_choice.lower() == 'yes'):
+            while(continue_choice.lower() == 'yes'):
                 print("What information about the game would you like to update?")
                 for option, desc in game_options.items():
                     if option == 'b':
@@ -325,7 +325,7 @@ def menu_players():
                 'q': "Quit.",
                 'quit': "",
             }
-            while(update_choice.lower() == 'yes'):
+            while(continue_choice.lower() == 'yes'):
                 print("What information about the player would you like to update?")
                 for option, desc in player_options.items():
                     if option == 'b':
