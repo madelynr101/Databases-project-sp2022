@@ -269,7 +269,7 @@ def menu_games():
                     exit()
                 else:
                     print("Invalid input.")
-                update_choice = input("Do you want to change any additional information about the game?(yes or no)\n" + PROMPT)
+                continue_choice = input("Do you want to change any additional information about the game?(yes or no)\n" + PROMPT)
             waitKey()
 
 def menu_players():
@@ -382,7 +382,7 @@ def menu_players():
                     exit()
                 else:
                     print("Invalid input.")
-                update_choice = input("Do you want to change any additional information about the player?(yes or no)\n" + PROMPT)
+                continue_choice = input("Do you want to change any additional information about the player?(yes or no)\n" + PROMPT)
             waitKey()
         #View players who play for (team)
         if choice == '3':
@@ -438,7 +438,6 @@ def menu_teams():
         if choice == '2':
             choice = "TBD"
             update_choice = "TBD"
-            continue_choice = 'yes'
             name = input("In which team? (insert team name):\n"+PROMPT)
             manag = 0
             update_choice = input("Please enter 1 to update team name 2 to update manager name:\n" + PROMPT)
