@@ -244,6 +244,28 @@ def update_player(db_file, ign,irl,rank,plays_for,role,kills,deaths,assist,kda,r
             qry = "update player set KPR = \"" + str(kpr) + "\" where IGN = " + ign
             curs.execute(qry)
 
+# Delete the game
+def delete_game(db_file, gno):
+    with sqlite3.connect(db_file) as connector:
+        curs = connector.cursor()
+        qry = "delete from game where Game_num = " + str(gno)
+        curs.execute(qry)
+
+# Delete the player 
+def delete_player(db_file, ign):
+    with sqlite3.connect(db_file) as connector:
+        curs = connector.cursor()
+        qry = "delete from player where IGN = " + ign
+        curs.execute(qry)
+
+# Delete the team 
+def delete_team(db_file, team_name):
+    with sqlite3.connect(db_file) as connector:
+        curs = connector.cursor()
+        qry = "delete from team where t_name = " + team_name
+        curs.execute(qry)
+
+
 db_file = "val.db"
 schema_file = "create_tables.sql"
 

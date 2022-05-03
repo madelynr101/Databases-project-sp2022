@@ -33,6 +33,7 @@ def main_menu():
         '5': "Add Team",
         '6': "View/Update Team",
         '7': "View Total Number of Games",
+        '8': "Delete Game", 
         'q': "quit",
     }
 
@@ -110,6 +111,12 @@ def main_menu():
         elif choice == '7':
             choice = "TBD"
             sql_functs.tot_games(DB_FILE)
+            waitKey()
+        # Delete Game
+        elif choice == '8':
+            choice = "TBD"
+            gno = int(input("What game number?"))
+            sql_functs.delete_game(DB_FILE, gno)
             waitKey()
     return choice
 
@@ -342,7 +349,7 @@ def menu_players():
                 
                 update_choice = input(PROMPT)
                 if update_choice != 'q':
-                    ign = int(input("In which player? (insert their IGN):\n"+PROMPT))
+                    ign = input("In which player? (insert their IGN):\n"+PROMPT)
                 irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr = 0,0,0,0,0,0,0,0,0,0
                 
                 # Branching to account for specific changes 
