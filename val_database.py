@@ -2,6 +2,7 @@
 import os, sys
 import sqlite3
 from getpass import getpass
+from turtle import update
 
 
 import sql_functs
@@ -230,9 +231,10 @@ def menu_games():
                     if option in ['back', 'quit']:
                         continue
                     print(option + ". " + desc)
-                
+
                 update_choice = input(PROMPT)
-                gno = int(input("In which game? (insert game number):\n"+PROMPT))
+                if update_choice != 'q':
+                    gno = int(input("In which game? (insert game number):\n"+PROMPT))
                 gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround = 0,0,0,0,0,0,0,0,0
                 
                 # Branching to account for specific changes 
@@ -339,7 +341,8 @@ def menu_players():
                     print(option + ". " + desc)
                 
                 update_choice = input(PROMPT)
-                ign = int(input("In which player? (insert their IGN):\n"+PROMPT))
+                if update_choice != 'q':
+                    ign = int(input("In which player? (insert their IGN):\n"+PROMPT))
                 irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr = 0,0,0,0,0,0,0,0,0,0
                 
                 # Branching to account for specific changes 
