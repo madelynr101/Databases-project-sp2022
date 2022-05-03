@@ -264,9 +264,9 @@ def menu_games():
                     numround = int(input("Please enter a new number of rounds:\n" + PROMPT))
                     sql_functs.update_game(DB_FILE,gname,wteam,map,mstfin,otherfin,mst,other,tourn,numround,gno)
                 elif update_choice == 'b' or update_choice == 'back':
-                    continue
+                    continue_choice = 'no'
                 elif update_choice == 'q' or update_choice == 'quit':
-                    exit()
+                    continue_choice = 'no'
                 else:
                     print("Invalid input.")
                 continue_choice = input("Do you want to change any additional information about the game?(yes or no)\n" + PROMPT)
@@ -377,9 +377,9 @@ def menu_players():
                     kpr = float(input("Please enter a new kpr:\n" + PROMPT))
                     sql_functs.update_player(DB_FILE,ign,irl,rank,plays_for,role,kills,deaths,assist,kda,rounds,kpr)
                 elif update_choice == 'b' or update_choice == 'back':
-                    continue
+                    continue_choice = 'no'
                 elif update_choice == 'q' or update_choice == 'quit':
-                    exit()
+                    continue_choice = 'no'
                 else:
                     print("Invalid input.")
                 continue_choice = input("Do you want to change any additional information about the player?(yes or no)\n" + PROMPT)
