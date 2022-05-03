@@ -91,9 +91,8 @@ def tot_games(db_file):
         curs = connector.cursor()
         s1 = "select COUNT(*) from game"
         curs.execute(s1)
-        print()
-        print("There are",curs.fetchall(), "current games in da database")
-        print()
+        headers = ["There are ________________ current games in the database"]
+        print(tabulate(curs.fetchall(), headers))
 
 # view which players participate in a certain game number
 def participates_by_num(db_file, gno):
