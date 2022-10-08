@@ -411,13 +411,13 @@ def menu_players():
         #View players who play for (team)
         if choice == '3':
             choice = "TBD"
-            team = input("Please enter the team name who u want to see players for:\n" + PROMPT)
+            team = input("Please enter the team name who you want to see players for:\n" + PROMPT)
             sql_functs.play_for(DB_FILE, team)
             waitKey()
         #View players who play (role)
         if choice == '4':
             choice = "TBD"
-            role = input("Please enter the team name who u want to see players for:\n" + PROMPT)
+            role = input("Please enter the team name who you want to see players for:\n" + PROMPT)
             sql_functs.plays_role(DB_FILE, role)
             waitKey()
         #View players with KDA over 1.5
@@ -477,7 +477,7 @@ def menu_teams():
         #View manager of (team)
         if choice == '3':
             choice = "TBD"
-            team = input("Please enter the team name who u want to see manager of:\n" + PROMPT)
+            team = input("Please enter the team name who you want to see manager of:\n" + PROMPT)
             sql_functs.manager_of(DB_FILE, team)
             waitKey()
 
