@@ -1,5 +1,4 @@
 # Databases-project-sp2022
-Databases project 
 How to run: 
 Install tabulate via the command: 
 ```pip3 install tabulate``` 
